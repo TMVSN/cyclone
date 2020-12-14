@@ -1,0 +1,42 @@
+<%= simple_form_for(@user, url: url_for(users_add_user_path), method: :post) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :first_name,
+                required: true,
+                autofocus: true,
+                label: 'First Name'%>
+    <%= f.input :last_name,
+                required: true,
+                autofocus: true,
+                label: 'Last Name'%>
+    <%= f.input :address,
+                required: true,
+                autofocus: true,
+                label: 'Address' %>
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: 'email' },
+                label: 'Email' %>
+    <%= f.input :manager, as: :boolean, checked_value: true, unchecked_value: false %>
+    <%= f.input :fixer, as: :boolean, checked_value: true, unchecked_value: false %>
+    <%#= f.input :manager,
+                as: :radio_buttons,
+                #include_blank: false,
+                collection: [true, false],
+                required: true,
+                label: 'Manager',
+                autofocus: true %>
+    <%#= f.input :fixer,
+                as: :select,
+                #include_blank: false,
+                collection: [true, false],
+                required: true,
+                label: 'Fixer',
+                autofocus: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Ajoutez", class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -1,2 +1,21 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>let's code !</h1>
+
+
+
+<% if user_signed_in? %>
+
+  <p>Current role :</p>
+    <% if current_user.manager == true && current_user.fixer == false %>
+    <p>Manager</p>
+  <% elsif current_user.manager == false && current_user.fixer == true %>
+    <p>Fixer</p>
+  <% else %>
+    <p>Customer</p>
+  <% end %>
+
+  <p><%= link_to "log out", destroy_user_session_path, class: "btn btn-primary" %></p>
+  <p><%= link_to "Users index", users_path, class: "btn btn-secondary" %></p>
+  <p><%= link_to "new User", new_user_path, class: "btn btn-success" %></p>
+<% else %>
+  <%= link_to "Sign in", new_user_session_path, class: "btn btn-danger" %>
+<% end %>
