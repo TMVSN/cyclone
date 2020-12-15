@@ -13,9 +13,11 @@
     <p>Customer</p>
   <% end %>
 
-  <p><%= link_to "log out", destroy_user_session_path, class: "btn btn-primary" %></p>
+  <p><%= link_to "New User", new_user_path, class: "btn btn-success" %></p>
   <p><%= link_to "Users index", users_path, class: "btn btn-secondary" %></p>
-  <p><%= link_to "new User", new_user_path, class: "btn btn-success" %></p>
+  <p><%= link_to "New order", new_order_path, class: "btn btn-info" %></p>
+  <p><%= link_to "Orders", orders_path, class: "btn btn-warning" %></p>
+  <p><%= link_to "log out", destroy_user_session_path, class: "btn btn-primary" %></p>
 <% else %>
   <%= link_to "Sign in", new_user_session_path, class: "btn btn-danger" %>
 <% end %>

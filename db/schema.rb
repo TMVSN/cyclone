@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_14_181442) do
+ActiveRecord::Schema.define(version: 2020_12_15_105701) do
+
+  create_table "orders", force: :cascade do |t|
+    t.string "address"
+    t.datetime "date"
+    t.boolean "fixed"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "manager_id"
+    t.integer "fixer_id"
+    t.integer "customer_id"
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["fixer_id"], name: "index_orders_on_fixer_id"
+    t.index ["manager_id"], name: "index_orders_on_manager_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,4 +43,7 @@ ActiveRecord::Schema.define(version: 2020_12_14_181442) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "orders", "users", column: "customer_id"
+  add_foreign_key "orders", "users", column: "fixer_id"
+  add_foreign_key "orders", "users", column: "manager_id"
 end

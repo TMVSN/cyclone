@@ -1,0 +1,9 @@
+<h1>new order</h1> 
+ 
+<%= simple_form_for(@order) do |f| %>
+  <%= f.input :address, required: true, label: 'address', input_html: { value: current_user.address } %>
+  <%= f.input :date, required: true, as: :datetime %>
+  <%= f.button :submit, "submit", class: 'btn btn-primary' %>
+<% end %>
+
+<p><%= link_to "Home", root_path, class: "btn btn-danger" %></p>

@@ -1,0 +1,13 @@
+<h1>Orders index</h1>
+
+<div class="d-flex">
+  <% @orders.each do |order| %>
+    <div class="card">
+      <p> customer : <%= User.find(order.customer_id).first_name %> <%= User.find(order.customer_id).last_name %></p>
+      <p> Address: <%= order.address %></p>
+      <p> date : <%= order.date %></p>
+    </div>
+    <% end %>
+</div>
+
+<p><%= link_to "Home", root_path, class: "btn btn-primary" %></p>
