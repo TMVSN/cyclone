@@ -15,3 +15,11 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+// External imports
+import "bootstrap";
+import "../plugins/flatpickr"
+
+document.addEventListener('DOMContentLoaded', function() {
+  flatpickr('.your-selector');
+})
