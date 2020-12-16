@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_105701) do
+ActiveRecord::Schema.define(version: 2020_12_16_105237) do
 
   create_table "orders", force: :cascade do |t|
     t.string "address"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2020_12_15_105701) do
     t.integer "manager_id"
     t.integer "fixer_id"
     t.integer "customer_id"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["fixer_id"], name: "index_orders_on_fixer_id"
     t.index ["manager_id"], name: "index_orders_on_manager_id"

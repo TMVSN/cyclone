@@ -18,8 +18,10 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import "../plugins/flatpickr"
+import 'mapbox-gl/dist/mapbox-gl.css';
 
-document.addEventListener('DOMContentLoaded', function() {
-  flatpickr('.your-selector');
+import { initMapbox } from '../plugins/init_mapbox';
+
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
 })
