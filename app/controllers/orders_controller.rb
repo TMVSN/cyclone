@@ -17,6 +17,14 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+
+    @markers = @orders.geocoded.map do |order|
+      {
+        lat: order.latitude,
+        lng: order.longitude
+      }
+    end
+    
   end
 
   private
