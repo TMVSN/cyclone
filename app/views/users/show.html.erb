@@ -1,0 +1,23 @@
+<h1>User show</h1>
+
+<p><%= link_to "Home", root_path, class: "btn btn-primary" %></p>
+
+<p><%= @user.id %></p>
+<p><%= @user.first_name %></p>
+<p><%= @user.last_name %></p>
+<p><%= @user.email %></p>
+<p><%= @user.address %></p>
+
+<% if @user.manager == true && @user.fixer == false %>
+      <p>Manager</p>
+    <% elsif @user.manager == false && @user.fixer == true %>
+      <p>Fixer</p>
+    <% else %>
+      <p>Customer</p>
+<% end %>
+
+<p>Orders made :</p>
+<p><%= Order.where(customer_id: @user.id).count %></p>
+
+<p>Orders fixed</p>
+<p><%= Order.where(fixer_id: @user.id).where(fixed: true).count %></p>
