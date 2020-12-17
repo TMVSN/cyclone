@@ -21,3 +21,59 @@
 <% else %>
   <%= link_to "Sign in", new_user_session_path, class: "btn btn-danger" %>
 <% end %>
+
+
+<%# Old code above %>
+
+<% if user_signed_in? %>
+
+  <p>Welcome home <%= current_user.first_name %></p>
+
+    <%# manager %>
+    <% if current_user.manager == true && current_user.fixer == false %>
+      <p>Current role : Manager</p>
+
+      <div class="home-content">
+        <div class="home-card">
+          <p><%= link_to "Orders", orders_path, class: "btn btn-warning" %></p>
+        </div>
+        <div class="home-card">
+          <p><%= link_to "Users", users_path, class: "btn btn-secondary" %></p>
+        </div>
+      </div>
+
+    <%# fixer %>
+    <% elsif current_user.manager == false && current_user.fixer == true %>
+      <p>Current role : Fixer</p>
+
+      <div class="home-content">
+        <div class="home-card">
+          <p><%= link_to "My orders - TO DO", orders_path, class: "btn btn-warning" %></p>
+        </div>
+        <div class="home-card">
+          <p><%= link_to "My Profile TO-DO", users_path, class: "btn btn-secondary" %></p>
+        </div>
+      </div>
+
+    <%# customer %>
+    <% else %>
+      <p>Current role : Customer</p>
+
+      <div class="home-content">
+        <div class="home-card">
+          <p><%= link_to "My orders - TO DO", orders_path, class: "btn btn-warning" %></p>
+        </div>
+        <div class="home-card">
+          <p><%= link_to "My Profile TO-DO", users_path, class: "btn btn-secondary" %></p>
+        </div>
+      </div>
+
+    <% end %>
+
+  
+<% else %>
+
+  <%= link_to "Sign in", new_user_session_path, class: "btn btn-danger" %>
+
+
+<% end %>
